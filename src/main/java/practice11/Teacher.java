@@ -3,11 +3,16 @@ package practice11;
 import java.util.LinkedList;
 import java.util.stream.Collectors;
 
-public class Teacher extends Person{
+public class Teacher extends Person implements Observer {
     private LinkedList<Klass> klasses;
     public Teacher(int id, String name, int age, LinkedList<Klass> klasses) {
         super(id, name, age);
         this.klasses = klasses;
+        registerAsClassObserver();
+    }
+
+    private void registerAsClassObserver() {
+        this.klasses.stream().forEach(klass -> klass.registerObserver(this));
     }
 
     public Teacher(int id, String name, int age) {
@@ -44,5 +49,13 @@ public class Teacher extends Person{
         return  isTeaching ?
                 super.introduce() + " I am a Teacher. I teach " + student.getName() + "." :
                 super.introduce() + " I am a Teacher. I don\'t teach " + student.getName() + ".";
+    }
+
+    @Override
+    public void update(Student student, Klass klass, String type) {
+        String message = type.equals("append") ?
+                "I am " + this.getName() + ". I know " + student.getName() +" has joined "+ klass.getDisplayName()+ ".\n" :
+                "I am "+ this.getName() +". I know " + student.getName() +" become Leader of "+ klass.getDisplayName() + ".\n";
+        System.out.print(message);
     }
 }
