@@ -39,10 +39,10 @@ public class Practice08Test {
         assertThat(klass.getNumber()).isEqualTo(2);
     }
 
-//    @Test
-//    public void should_class_get_display_name() throws Exception {
-//        assertThat(klass.getDisplayName()).isEqualTo("Class 2");
-//    }
+    @Test
+    public void should_class_get_display_name() throws Exception {
+        assertThat(klass.getDisplayName()).isEqualTo("Class 2");
+    }
 //
 //    @Test
 //    public void should_class_assign_a_leader() throws Exception {
