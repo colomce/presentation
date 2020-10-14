@@ -43,11 +43,11 @@ public class Practice09Test {
     public void should_class_have_a_number() throws Exception {
         assertThat(klass.getNumber()).isEqualTo(2);
     }
-//
-//    @Test
-//    public void should_class_get_display_name() throws Exception {
-//        assertThat(klass.getDisplayName()).isEqualTo("Class 2");
-//    }
+
+    @Test
+    public void should_class_get_display_name() throws Exception {
+        assertThat(klass.getDisplayName()).isEqualTo("Class 2");
+    }
 //
 //    @Test
 //    public void should_class_not_assign_a_student_as_leader_when_student_is_not_a_member() throws Exception {
