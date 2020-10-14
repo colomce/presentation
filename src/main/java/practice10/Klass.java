@@ -35,4 +35,8 @@ public class Klass {
             this.leader = student;
         }
     }
+
+    public void appendMember(Student student) {
+        student.setKlass(this);
+    }
 }
