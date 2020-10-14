@@ -15,4 +15,10 @@ public class Teacher extends Person {
     public void setKlass(Klass klass) {
         this.klass = klass;
     }
+
+    public String introduce() {
+        return this.klass == null ?
+                "" :
+                super.introduce() + " I am a Teacher. I teach " + this.klass.getDisplayName() + ".";
+    }
 }
