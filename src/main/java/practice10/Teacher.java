@@ -1,5 +1,6 @@
 package practice10;
 import java.util.LinkedList;
+import java.util.stream.Collectors;
 
 public class Teacher extends Person {
     private LinkedList<Klass> klasses;
@@ -18,5 +19,15 @@ public class Teacher extends Person {
 
     public void setClasses(LinkedList<Klass> klasses) {
         this.klasses = klasses;
+    }
+
+    public String introduce() {
+        return this.klasses == null || this.klasses.size() == 0 ?
+                super.introduce() + " I am a Teacher. I teach No Class." :
+                super.introduce() + " I am a Teacher. I teach Class " +
+                        this.klasses.stream()
+                                .map(Klass::getNumber)
+                                .map(String::valueOf)
+                                .collect(Collectors.joining(", ")) + ".";
     }
 }
