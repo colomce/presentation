@@ -11,12 +11,12 @@ import static org.fest.assertions.api.Assertions.assertThat;
 
 public class Practice10Test {
     private Klass klass2;
-//    private ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
     @Before
     public void setup() {
         klass2 = new Klass(2);
-//        System.setOut(new PrintStream(outContent));
+        System.setOut(new PrintStream(outContent));
     }
 
     @Test
@@ -49,20 +49,20 @@ public class Practice10Test {
     public void should_class_get_display_name() throws Exception {
         assertThat(klass2.getDisplayName()).isEqualTo("Class 2");
     }
-//
-//    @Test
-//    public void should_class_not_assign_a_student_as_leader_when_student_is_not_a_member() throws Exception {
-//        Student jerry = new Student(1, "Jerry", 8, new Klass(5));
-//
-//        klass2.assignLeader(jerry);
-//
-//        assertThat(systemOut()).isEqualTo("It is not one of us.\n");
-//        assertThat(klass2.getLeader()).isNotEqualTo(jerry);
-//    }
-//
-//    private String systemOut() {
-//        return outContent.toString();
-//    }
+
+    @Test
+    public void should_class_not_assign_a_student_as_leader_when_student_is_not_a_member() throws Exception {
+        Student jerry = new Student(1, "Jerry", 8, new Klass(5));
+
+        klass2.assignLeader(jerry);
+
+        assertThat(systemOut()).isEqualTo("It is not one of us.\n");
+        assertThat(klass2.getLeader()).isNotEqualTo(jerry);
+    }
+
+    private String systemOut() {
+        return outContent.toString();
+    }
 //
 //    @Test
 //    public void should_class_assign_a_member_student_as_leader() throws Exception {

@@ -19,4 +19,20 @@ public class Klass {
     public String getDisplayName() {
         return "Class " + this.number;
     }
+
+    public Student getLeader() {
+        return leader;
+    }
+
+    public void setLeader(Student leader) {
+        this.leader = leader;
+    }
+
+    public void assignLeader(Student student) {
+        if(this.number != student.getKlass().getNumber()) {
+            System.out.print("It is not one of us.\n");
+        } else {
+            this.leader = student;
+        }
+    }
 }
