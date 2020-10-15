@@ -47,6 +47,10 @@ public class Klass implements Observable {
         notifyObservers(student, "append");
     }
 
+    public boolean isIn(Student student) {
+        return student.getKlass().number == this.number;
+    }
+
     @Override
     public void registerObserver(Observer observer) {
         if(observer != null) {
