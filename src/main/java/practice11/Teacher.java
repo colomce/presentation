@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 public class Teacher extends Person implements Observer {
     private LinkedList<Klass> klasses;
+
     public Teacher(int id, String name, int age, LinkedList<Klass> klasses) {
         super(id, name, age);
         this.klasses = klasses;
@@ -44,16 +45,21 @@ public class Teacher extends Person implements Observer {
 
     public String introduceWith(Student student) {
         boolean isTeaching = isTeaching(student);
-        return  isTeaching ?
+        return isTeaching ?
                 super.introduce() + " I am a Teacher. I teach " + student.getName() + "." :
                 super.introduce() + " I am a Teacher. I don\'t teach " + student.getName() + ".";
     }
 
     @Override
-    public void update(Student student, Klass klass, String type) {
-        String message = type.equals("append") ?
-                "I am " + this.getName() + ". I know " + student.getName() +" has joined "+ klass.getDisplayName()+ ".\n" :
-                "I am "+ this.getName() +". I know " + student.getName() +" become Leader of "+ klass.getDisplayName() + ".\n";
-        System.out.print(message);
+    public void update(Student student, KlassEvents klassEvent) {
+        switch (klassEvent) {
+            case NEW_APPENDED_STUDENT:
+                System.out.print("I am " + this.getName() + ". I know " + student.getName() + " has joined " + student.getKlass().getDisplayName() + ".\n");
+                break;
+
+            case NEW_LEADER:
+                System.out.print("I am " + this.getName() + ". I know " + student.getName() + " become Leader of " + student.getKlass().getDisplayName() + ".\n");
+                break;
+        }
     }
 }
