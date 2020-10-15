@@ -13,7 +13,7 @@ public class Teacher extends Person implements Observer {
     }
 
     private void registerAsClassObserver() {
-        this.klasses.stream().forEach(klass -> klass.registerObserver(this));
+        this.klasses.forEach(klass -> klass.registerObserver(this));
     }
 
     public Teacher(int id, String name, int age) {
