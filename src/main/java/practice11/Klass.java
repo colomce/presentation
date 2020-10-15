@@ -63,10 +63,4 @@ public class Klass implements Observable {
         this.observerList.stream().forEach(observer ->  {observer.update(student, this, action);});
     }
 
-    @Override
-    public void removeObserver(Observer observer) {
-        if(observer != null ){
-            this.observerList.remove(observer);
-        }
-    }
 }
