@@ -6,10 +6,15 @@
  * user guide available at https://docs.gradle.org/4.2.1/userguide/java_library_plugin.html
  */
 
+plugins {
+    id "org.sonarqube" version "2.7"
+}
+
 // Apply the java-library plugin to add support for Java Library
 apply plugin: 'java-library'
 apply plugin: 'idea'
 apply plugin: 'eclipse'
+
 
 // In this section you declare where to find the dependencies of your project
 repositories {
@@ -24,6 +29,10 @@ dependencies {
 
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
     implementation 'com.google.guava:guava:22.0'
+
+    // https://mvnrepository.com/artifact/org.springframework/spring-context
+    compile group: 'org.springframework', name: 'spring-context', version: '5.2.9.RELEASE'
+
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
